@@ -638,11 +638,9 @@ describe('VTextField.ts', () => { // eslint-disable-line max-statements
   it('should have focus and blur methods', async () => {
     const wrapper = mountFunction()
     const onBlur = jest.spyOn(wrapper.vm.$refs.input, 'blur')
-    const onFocus = jest.spyOn(wrapper.vm, 'onFocus')
+    const onFocus = jest.spyOn(wrapper.vm.$refs.input, 'focus')
 
     wrapper.vm.focus()
-
-    await wrapper.vm.$nextTick()
 
     expect(onFocus).toHaveBeenCalledTimes(1)
 
@@ -836,5 +834,25 @@ describe('VTextField.ts', () => { // eslint-disable-line max-statements
     // Simulate observe firing with no autofocus
     wrapper.vm.onObserve([], [], true)
     expect(document.activeElement === element).toBe(false)
+  })
+
+  it('should use the correct icon color when using the solo inverted prop', () => {
+    const wrapper = mountFunction({
+      propsData: { soloInverted: true },
+      mocks: {
+        $vuetify: {
+          theme: { dark: false },
+        },
+      },
+      provide: {
+        theme: { isDark: true },
+      },
+    })
+
+    expect(wrapper.vm.computedColor).toBe('white')
+
+    wrapper.vm.focus()
+
+    expect(wrapper.vm.computedColor).toBe('primary')
   })
 })

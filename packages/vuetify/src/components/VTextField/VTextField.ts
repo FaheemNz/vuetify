@@ -11,6 +11,7 @@ import VLabel from '../VLabel'
 // Mixins
 import Intersectable from '../../mixins/intersectable'
 import Loadable from '../../mixins/loadable'
+import Validatable from '../../mixins/validatable'
 
 // Directives
 import ripple from '../../directives/ripple'
@@ -116,6 +117,13 @@ export default baseMixins.extend<options>().extend({
         'v-text-field--rounded': this.rounded,
         'v-text-field--shaped': this.shaped,
       }
+    },
+    computedColor (): string | undefined {
+      const computedColor = Validatable.options.computed.computedColor.call(this)
+
+      if (!this.soloInverted || !this.isFocused) return computedColor
+
+      return this.color || 'primary'
     },
     computedCounterValue (): number {
       if (typeof this.counterValue === 'function') {
@@ -428,6 +436,10 @@ export default baseMixins.extend<options>().extend({
     },
     onFocus (e?: Event) {
       if (!this.$refs.input) return
+
+      if (document.activeElement !== this.$refs.input) {
+        return this.$refs.input.focus()
+      }
 
       if (!this.isFocused) {
         this.isFocused = true
