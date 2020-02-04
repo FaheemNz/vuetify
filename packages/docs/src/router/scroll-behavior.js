@@ -23,7 +23,7 @@ export default async function (to, from, savedPosition) {
         try {
           goTo(scrollTo, options)
         } catch (err) {
-          console.log(err)
+          console.log(err) // eslint-disable-line no-console
         }
 
         resolve()

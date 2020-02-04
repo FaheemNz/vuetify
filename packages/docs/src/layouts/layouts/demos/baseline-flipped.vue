@@ -106,7 +106,10 @@
     name: 'LayoutsDemosBaselineFlipped',
 
     props: {
-      source: String,
+      source: {
+        type: String,
+        default: '',
+      },
     },
     data: () => ({
       drawer: null,

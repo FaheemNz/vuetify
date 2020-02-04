@@ -38,7 +38,6 @@
             </v-list-item-icon>
             <v-list-item-title>Account</v-list-item-title>
           </v-list-item>
-
         </v-list-item-group>
       </v-list>
     </v-navigation-drawer>

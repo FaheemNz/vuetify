@@ -79,7 +79,7 @@
         })
           .then(res => res.json())
           .then(this.setFeatured)
-          .catch(err => console.log(err))
+          .catch(err => console.log(err)) // eslint-disable-line no-console
       },
       setFeatured (data) {
         if (!data) return []

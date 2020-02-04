@@ -85,7 +85,12 @@
   export default {
     name: 'DocVariableApi',
 
-    props: { value: String },
+    props: {
+      value: {
+        type: String,
+        default: '',
+      },
+    },
 
     data: () => ({
       components: [],

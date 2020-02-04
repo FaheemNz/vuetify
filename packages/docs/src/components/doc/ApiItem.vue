@@ -115,8 +115,14 @@
 <script>
   export default {
     props: {
-      headers: Array,
-      item: Object,
+      headers: {
+        type: Array,
+        default: () => ([]),
+      },
+      item: {
+        type: Object,
+        default: () => ({}),
+      },
     },
   }
 </script>

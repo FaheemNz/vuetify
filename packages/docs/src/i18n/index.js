@@ -47,7 +47,6 @@ function loadLanguageAsync (lang) {
 
       return Promise.resolve(setI18nLanguage(lang))
     }).catch(err => {
-      console.log(err)
       throw err
     })
   }

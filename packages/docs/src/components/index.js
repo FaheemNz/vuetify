@@ -18,7 +18,6 @@ Vue.component('v-paper', {
 // and lazily load them
 // https://vuejs.org/v2/guide/components-dynamic-async
 requireComponent.keys().forEach(fileName => {
-  console.log(fileName)
   const componentName = upperFirst(
     camelCase(fileName.replace(/^\.\//, '').replace(/\.\w+$/, ''))
   )

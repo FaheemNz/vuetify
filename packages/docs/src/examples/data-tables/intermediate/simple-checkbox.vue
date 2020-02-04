@@ -6,7 +6,10 @@
       class="elevation-1"
     >
       <template v-slot:item.glutenfree="{ item }">
-        <v-checkbox v-model="item.glutenfree" disabled></v-checkbox>
+        <v-checkbox
+          v-model="item.glutenfree"
+          disabled
+        ></v-checkbox>
       </template>
     </v-data-table>
   </div>
